@@ -26,10 +26,11 @@ jobs:
       - name: Get archived folder name for custom tarball
         id: get_archived_folder_name
         run: echo ::set-output name=ARCHIVED_FOLDER::${{ github.repository_owner }}-$(git rev-parse --short HEAD)
-      - name: Shell PWD
+      - name: Shell PWD Sync submodules
         run: |
           pwd
           ls -al
+          git submodule update --init --recursive
       - name: Create custom tarball artifact
         run: |
           cd ../
