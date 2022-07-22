@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: true
+          submodules: recursive
 
       - name: Get custom tarball name
         id: get_tarball_name
@@ -30,7 +30,6 @@ jobs:
         run: |
           pwd
           ls -al
-          git submodule update --init --recursive
       - name: Create custom tarball artifact
         run: |
           cd ../
